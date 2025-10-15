@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Kas Bendahara</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Catatan Kas Bendahara - [Nama Organisasi]</h1>
+        <div class="saldo-akhir">
+            Saldo Akhir: <span id="saldoAkhir">Rp 0</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="input-form">
+            <h2>Input Transaksi</h2>
+            <form id="formTransaksi">
+                <label for="tanggal">Tanggal:</label>
+                <input type="date" id="tanggal" required><br>
+
+                <label for="keterangan">Keterangan:</label>
+                <input type="text" id="keterangan" required><br>
+
+                <label for="jenis">Jenis:</label>
+                <select id="jenis" required>
+                    <option value="pemasukan">Pemasukan (➕)</option>
+                    <option value="pengeluaran">Pengeluaran (➖)</option>
+                </select><br>
+
+                <label for="jumlah">Jumlah (Rp):</label>
+                <input type="number" id="jumlah" required min="100"><br>
+
+                <button type="submit">Tambah Transaksi</button>
+            </form>
+        </section>
+
+        <section class="data-view">
+            <div class="table-container">
+                <h2>Daftar Transaksi</h2>
+                <table id="tabelKas">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Keterangan</th>
+                            <th>Jenis</th>
+                            <th>Jumlah (Rp)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="chart-container">
+                <h2>Perbandingan Kas</h2>
+                <canvas id="grafikKas"></canvas>
+            </div>
+        </section>
+        
+        <section class="status-view full-width">
+            <h2>Status Anggota (Kehadiran/Iuran)</h2>
+            <div class="status-controls">
+                <label for="namaAnggota">Tambah/Pilih Anggota:</label>
+                <input type="text" id="namaAnggotaInput" placeholder="Nama Anggota Baru">
+                <button onclick="tambahAnggota()">Tambah Anggota</button>
+                <label for="tanggalStatus">Tambah Tanggal Status:</label>
+                <input type="date" id="tanggalStatusInput">
+                <button onclick="tambahKolomTanggal()">Tambah Kolom</button>
+            </div>
+            
+            <div class="table-container-status">
+                <table id="tabelStatus">
+                    <thead>
+                        <tr>
+                            <th>Nama Anggota</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>Dibuat oleh: **Binti Eggy SMKN 1 Grogol** | Dashboard Kas Sederhana untuk Pencatatan Transaksi</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
